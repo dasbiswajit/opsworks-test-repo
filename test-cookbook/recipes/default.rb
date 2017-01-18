@@ -2,7 +2,7 @@
 # Recipe: default
 
 # Get the current version from metadata
-Log.debug("Node attributes from" + node.default['test-cookbook']['attribute1'])
+Log.info("Node attributes from" + node.default['test-cookbook']['attribute1'])
 
 # test file resource
 file '/tmp/testfile.log' do
