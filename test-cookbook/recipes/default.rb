@@ -16,6 +16,14 @@ end
 
 #execute yum repolist
 
-execute 'yum_repolist' do
-  command 'yum repolist'
+ruby_block "check" do
+    block do
+        #tricky way to load this Chef::Mixin::ShellOut utilities
+        Chef::Resource::RubyBlock.send(:include, Chef::Mixin::ShellOut)      
+        command = 'yum repolist'
+        command_out = shell_out(command)
+       Log.info('output: ' + command_out.stdout)
+    end
+    action :create
 end
+
