@@ -2,6 +2,6 @@
 # Recipe: default
 
 # Get the current version from metadata
-Log.info("Executing dependency cookbook. Node value: " + node.default['dependency-cookbook']['attribute'])
+Log.info("Executing dependency cookbook. Node value from dependency: " + node.default['dependency-cookbook']['attribute'])
 
 
