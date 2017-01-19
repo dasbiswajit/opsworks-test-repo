@@ -20,7 +20,7 @@ ruby_block "check" do
         Chef::Resource::RubyBlock.send(:include, Chef::Mixin::ShellOut)
         repo_list_command = 'yum repolist'
         yum_security_check_command = 'yum --security check-update'
-        command_out = shell_out(command)
+        command_out = shell_out(repo_list_command)
        Log.info('Repolist: ' + command_out.stdout)
        security_check_command_output = shell_out(yum_security_check_command)
        Log.info('security_check_output: ' + security_check_command_output.stdout.to_s)
