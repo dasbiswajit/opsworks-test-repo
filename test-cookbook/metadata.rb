@@ -8,3 +8,4 @@ version '1.0.0'
 %w(redhat suse).each do |os|
   supports os
 end
+depends 'dependency-cookbook'
