@@ -13,3 +13,8 @@ file '/tmp/testfile.log' do
   group 'root' 
 end
 
+#execute yum repolist
+
+execute 'yum_repolist' do
+  command 'yum repolist'
+end
