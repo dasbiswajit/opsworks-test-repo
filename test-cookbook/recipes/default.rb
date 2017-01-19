@@ -14,6 +14,16 @@ file '/tmp/testfile.log' do
   group 'root' 
 end
 
-command = 'yum repolist'
-command_out = Chef::Mixin::ShellOut(command)
-Log.info('output: ' + command_out.stdout)
+ruby_block "check" do
+    block do
+        #tricky way to load this Chef::Mixin::ShellOut utilities
+        Chef::Resource::RubyBlock.send(:include, Chef::Mixin::ShellOut)
+        repo_list_command = 'yum repolist'
+        yum_security_check_command = 'yum --security check-update'
+        command_out = shell_out(command)
+       Log.info('Repolist: ' + command_out.stdout)
+       security_check_command_output = shell_out(yum_security_check_command)
+       Log.info('security_check_output: ' + security_check_command_output.stdout.to_s)
+    end
+    action :create
+end
