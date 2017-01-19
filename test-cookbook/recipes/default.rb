@@ -1,6 +1,7 @@
 # Cookbook: test-cookbook
 # Recipe: default
 
+include_recipe 'dependency-cookbook::default'
 # Get the current version from metadata
 Log.info("Node attributes value is : " + node.default['test-cookbook']['attribute1'])
 
